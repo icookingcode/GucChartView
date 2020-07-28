@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="radius" format="dimension" />
+
+
+
+
+
+    <declare-styleable name="PieChartView">
+        <attr name="bgColor" format="color" />
+        <attr name="lineWith" format="dimension" />
+        <!--大圆半径-->
+        <attr name="radius" />
+        <!--内部填充圆半径-->
+        <attr name="radiusInner" format="dimension" />
+        <!--指示圆点半径-->
+        <attr name="radiusCenterPoint" format="dimension" />
+        <!--内圆填充颜色-->
+        <attr name="innerCircleColor" format="dimension" />
+        <attr name="textSize4Describe" format="dimension" />
+        <attr name="textSize4Score" format="dimension" />
+        <attr name="textColor4Describe" format="color" />
+        <attr name="textColor4Score" format="color" />
+        <attr name="isDrawCenterText" format="boolean" />
+    </declare-styleable>
+
+</resources>
