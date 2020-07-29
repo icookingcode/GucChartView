@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="radius" format="dimension" />
-
-
-
-
-
     <declare-styleable name="PieChartView">
         <attr name="bgColor" format="color" />
         <attr name="lineWith" format="dimension" />
+        <attr name="lineLength" format="dimension" />
+        <attr name="lineOffsetX" format="dimension" />
+        <attr name="lineStyle" format="enum">
+            <enum name="match" value="0" />
+            <enum name="fixed" value="1" />
+        </attr>
         <!--大圆半径-->
         <attr name="radius" />
         <!--内部填充圆半径-->
         <attr name="radiusInner" format="dimension" />
         <!--指示圆点半径-->
         <attr name="radiusCenterPoint" format="dimension" />
+        <attr name="centerPointPosition" format="enum">
+            <enum name="inner" value="0" />
+            <enum name="outer" value="1" />
+        </attr>
+        <attr name="centerPointStyle" format="enum">
+            <enum name="solid" value="0" />
+            <enum name="hollow" value="1" />
+        </attr>
+        <attr name="centerPointOffset" format="dimension" />
         <!--内圆填充颜色-->
         <attr name="innerCircleColor" format="dimension" />
         <attr name="textSize4Describe" format="dimension" />

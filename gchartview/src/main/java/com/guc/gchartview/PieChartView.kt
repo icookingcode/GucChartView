@@ -6,9 +6,9 @@ import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.guc.gchartview.model.PieData
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
-
 
 /**
  * Created by guc on 2020/7/13.
@@ -18,6 +18,15 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
     View(context, attrs, defStyleAttr) {
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context) : this(context, null)
+
+    companion object {
+        const val STYLE_SOLID = 0
+        const val STYLE_HOLLOW = 1
+        const val POSITION_INNER = 0
+        const val POSITION_OUTER = 1
+        const val LINE_STYLE_MATCH = 0
+        const val LINE_STYLE_FIXED = 1
+    }
 
     private val minHeight = dp2px(150f)
     private val minWidth = dp2px(300f)
@@ -30,9 +39,15 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
 
     //圆弧中心点小圆点的圆心半径
     private var mCenterPointRadius = 0
+    private var mCenterPointPosition = POSITION_INNER
+    private var mCenterPointStyle = STYLE_SOLID
+    private var mCenterPointOffset = 0
 
     //指示线宽度
     private var mLineWidth = 0
+    private var mLineStyle = LINE_STYLE_MATCH
+    private var mLineLength = 0
+    private var mLineOffsetX = 0
 
     //圆弧开始绘制的角度
     private var mStartAngle = 0f
@@ -105,10 +120,10 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
                 (mCenterY + mRadius).toFloat()
             )
             val rectF2 = RectF(
-                (mCenterX - mRadius - dp2px(4f)).toFloat(),
-                (mCenterY - mRadius - dp2px(4f)).toFloat(),
-                (mCenterX + mRadius + dp2px(4f)).toFloat(),
-                (mCenterY + mRadius + dp2px(4f)).toFloat()
+                (mCenterX - mRadius - mCenterPointOffset).toFloat(),
+                (mCenterY - mRadius - mCenterPointOffset).toFloat(),
+                (mCenterX + mRadius + mCenterPointOffset).toFloat(),
+                (mCenterY + mRadius + mCenterPointOffset).toFloat()
             )
             for (i in mPieData.indices) {
                 data = mPieData[i]
@@ -171,10 +186,21 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
         mCenterPointRadius =
             array.getDimension(R.styleable.PieChartView_radiusCenterPoint, dp2px(2f).toFloat())
                 .toInt()
+        mCenterPointPosition =
+            array.getInt(R.styleable.PieChartView_centerPointPosition, POSITION_INNER)
+        mCenterPointStyle = array.getInt(R.styleable.PieChartView_centerPointStyle, STYLE_SOLID)
+        mCenterPointOffset =
+            array.getDimension(R.styleable.PieChartView_centerPointOffset, dp2px(5f).toFloat())
+                .toInt()
         mTextSize4Describe =
             array.getDimension(R.styleable.PieChartView_textSize4Describe, 32f).toInt()
         mLineWidth =
             array.getDimension(R.styleable.PieChartView_lineWith, dp2px(2f).toFloat()).toInt()
+        mLineLength =
+            array.getDimension(R.styleable.PieChartView_lineWith, dp2px(30f).toFloat()).toInt()
+        mLineOffsetX =
+            array.getDimension(R.styleable.PieChartView_lineOffsetX, dp2px(10f).toFloat()).toInt()
+        mLineStyle = array.getInt(R.styleable.PieChartView_lineStyle, LINE_STYLE_MATCH)
         isDrawCenterText = array.getBoolean(R.styleable.PieChartView_isDrawCenterText, true)
         array.recycle()
     }
@@ -227,24 +253,41 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
             mPaint.strokeWidth = mLineWidth.toFloat()
             //画指示点
             mPaint.color = pieData.colorLine
-            mPaint.style = Paint.Style.FILL
+            mPaint.style =
+                if (mCenterPointStyle == STYLE_SOLID) Paint.Style.FILL else Paint.Style.STROKE
             canvas.drawCircle(
-                pieData.centerPoint.x.toFloat(),
-                pieData.centerPoint.y.toFloat(),
+                if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.x.toFloat() else getLineEndX(
+                    false
+                ),
+                if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.y.toFloat() else (perLeftHeight * i + perLeftHeight / 2).toFloat(),
                 mCenterPointRadius.toFloat(),
                 mPaint
             )
             //划线
+            mPaint.color = pieData.colorLine
             mPaint.style = Paint.Style.STROKE
             path = Path()
             path.moveTo(pieData.centerPoint.x.toFloat(), pieData.centerPoint.y.toFloat())
             path.lineTo(
-                (mCenterX - mRadius - dp2px(4f) - dp2px(5f)).toFloat(),
+                (mCenterX - mRadius - mLineOffsetX).toFloat(),
                 (perLeftHeight * i + perLeftHeight / 2).toFloat()
             )
-            path.lineTo(dp2px(10f).toFloat(), (perLeftHeight * i + perLeftHeight / 2).toFloat())
+            path.lineTo(getLineEndX(false), (perLeftHeight * i + perLeftHeight / 2).toFloat())
             canvas.drawPath(path, mPaint)
 
+            //修复空心
+            if (mCenterPointStyle == STYLE_HOLLOW) {
+                mPaint.color = mBgColor
+                mPaint.style = Paint.Style.FILL
+                canvas.drawCircle(
+                    if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.x.toFloat() else getLineEndX(
+                        false
+                    ),
+                    if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.y.toFloat() else (perLeftHeight * i + perLeftHeight / 2).toFloat(),
+                    mCenterPointRadius - mPaint.strokeWidth / 2,
+                    mPaint
+                )
+            }
             //写字
             mPaint.style = Paint.Style.FILL
             mPaint.strokeWidth = dp2px(0.75f).toFloat()
@@ -275,26 +318,43 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
             mPaint.strokeWidth = mLineWidth.toFloat()
             //画指示点
             mPaint.color = pieData.colorLine
-            mPaint.style = Paint.Style.FILL
+            mPaint.style =
+                if (mCenterPointStyle == STYLE_SOLID) Paint.Style.FILL else Paint.Style.STROKE
             canvas.drawCircle(
-                pieData.centerPoint.x.toFloat(),
-                pieData.centerPoint.y.toFloat(),
+                if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.x.toFloat() else getLineEndX(
+                    true
+                ),
+                if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.y.toFloat() else (perRightHeight * i + perRightHeight / 2).toFloat(),
                 mCenterPointRadius.toFloat(),
                 mPaint
             )
             //画线
+            mPaint.color = pieData.colorLine
             mPaint.style = Paint.Style.STROKE
             path = Path()
             path.moveTo(pieData.centerPoint.x.toFloat(), pieData.centerPoint.y.toFloat())
             path.lineTo(
-                (mCenterX + mRadius + dp2px(4f) + dp2px(5f)).toFloat(),
+                (mCenterX + mRadius + mLineOffsetX).toFloat(),
                 (perRightHeight * i + perRightHeight / 2).toFloat()
             )
             path.lineTo(
-                (2 * mCenterX - dp2px(10f)).toFloat(),
+                getLineEndX(true),
                 (perRightHeight * i + perRightHeight / 2).toFloat()
             )
             canvas.drawPath(path, mPaint)
+            //修复空心
+            if (mCenterPointStyle == STYLE_HOLLOW) {
+                mPaint.color = mBgColor
+                mPaint.style = Paint.Style.FILL
+                canvas.drawCircle(
+                    if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.x.toFloat() else getLineEndX(
+                        true
+                    ),
+                    if (mCenterPointPosition == POSITION_INNER) pieData.centerPoint.y.toFloat() else (perRightHeight * i + perRightHeight / 2).toFloat(),
+                    mCenterPointRadius - mPaint.strokeWidth / 2,
+                    mPaint
+                )
+            }
             //写字
             mPaint.style = Paint.Style.FILL
             mPaint.strokeWidth = dp2px(0.75f).toFloat()
@@ -318,6 +378,25 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
                 (perRightHeight * i + perRightHeight / 2 - 3 * mLineWidth / 2).toFloat(),
                 mPaint
             )
+        }
+    }
+
+    /**
+     * 获取横线结尾x坐标
+     */
+    private fun getLineEndX(isRight: Boolean): Float {
+        return if (isRight) {
+            if (mLineStyle == LINE_STYLE_MATCH) {
+                2 * mCenterX - dp2px(10f).toFloat()
+            } else {
+                (mCenterX + mRadius + mLineOffsetX + mLineLength).toFloat()
+            }
+        } else {
+            if (mLineStyle == LINE_STYLE_MATCH) {
+                dp2px(10f).toFloat()
+            } else {
+                (mCenterX - mRadius - mLineOffsetX - mLineLength).toFloat()
+            }
         }
     }
 
@@ -371,26 +450,4 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
         return decimalFormat.format(dataValue)
     }
 
-    /**
-     * 饼状图数据类
-     */
-    class PieData(
-        var score: Float,
-        var describe: String?,
-        var colorLine: Int,
-        var colorDescribe: Int = Color.parseColor("#999999"),
-        var colorScore: Int = Color.parseColor("#333333")
-    ) : Comparable<PieData> {
-
-        override fun compareTo(other: PieData): Int {
-            return this.centerPoint.y - other.centerPoint.y
-        }
-
-
-        var proportion //占比
-                = 0f
-        lateinit var centerPoint //指示点位置
-                : Point
-        var isRight = true //右侧的点
-    }
 }

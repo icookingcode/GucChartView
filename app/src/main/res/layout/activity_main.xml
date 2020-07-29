@@ -12,8 +12,13 @@
         android:layout_height="200dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        app:centerPointOffset="5dp"
+        app:centerPointPosition="inner"
+        app:centerPointStyle="hollow"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lineStyle="fixed"
+        app:radiusCenterPoint="3dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
