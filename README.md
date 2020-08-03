@@ -28,14 +28,14 @@
 ### 设置数据
 ```
     private fun loadPieChartData() {
-        val data = listOf(
-                PieChartView.PieData(45f, "数据库", Color.GREEN),
-                PieChartView.PieData(65f, "ftp", Color.YELLOW),
-                PieChartView.PieData(60f, "专线接入", Color.RED),
-                PieChartView.PieData(35f, "设备采集", Color.BLACK),
-                PieChartView.PieData(35f, "其他", Color.MAGENTA)
-        )
-        pieChartView.setData(data)
+            val data = listOf(
+                PieData(45f, "数据库", Color.GREEN),
+                PieData(65f, "ftp", Color.YELLOW),
+                PieData(60f, "专线接入", Color.RED),
+                PieData(35f, "设备采集", Color.BLACK),
+                PieData(35f, "其他", Color.MAGENTA)
+            )
+            pieChartView.setData(data)
     }
 ```
 ### 效果图
