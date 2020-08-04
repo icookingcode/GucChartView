@@ -32,6 +32,9 @@
         <attr name="textColor4Describe" format="color" />
         <attr name="textColor4Score" format="color" />
         <attr name="isDrawCenterText" format="boolean" />
+        <!--开始绘制的角度-->
+        <attr name="startAngle" format="float" />
+        <attr name="rotateEnable" format="boolean" />
     </declare-styleable>
 
 </resources>

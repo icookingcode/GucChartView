@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import com.guc.gchartview.model.PieData
 import java.text.DecimalFormat
@@ -15,7 +18,7 @@ import kotlin.math.roundToInt
  * Description：自定义PieChart
  */
 class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    View(context, attrs, defStyleAttr) {
+    View(context, attrs, defStyleAttr), GestureDetector.OnGestureListener {
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context) : this(context, null)
 
@@ -62,6 +65,12 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
     private var isDrawCenterText = true
     private var mTextSize4Describe = 0
     private var mSumScore = 0f
+
+    //手势监听
+    private val gestureDetector = GestureDetector(context, this)
+    private var mStartX: Float = 0f
+    private var mStartY: Float = 0f
+    var rotateEnable = true
 
     init {
         initAttrs(attrs, defStyleAttr)
@@ -202,6 +211,8 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
             array.getDimension(R.styleable.PieChartView_lineOffsetX, dp2px(10f).toFloat()).toInt()
         mLineStyle = array.getInt(R.styleable.PieChartView_lineStyle, LINE_STYLE_MATCH)
         isDrawCenterText = array.getBoolean(R.styleable.PieChartView_isDrawCenterText, true)
+        mStartAngle = array.getFloat(R.styleable.PieChartView_startAngle, 0f)
+        rotateEnable = array.getBoolean(R.styleable.PieChartView_rotateEnable, true)
         array.recycle()
     }
 
@@ -448,6 +459,54 @@ class PieChartView(context: Context, attrs: AttributeSet? = null, defStyleAttr: 
     private fun getFormatPercentRate(dataValue: Float): String {
         val decimalFormat = DecimalFormat(".00") //构造方法的字符格式这里如果小数不足2位,会以0补足.
         return decimalFormat.format(dataValue)
+    }
+
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return if (rotateEnable) {
+            this.gestureDetector.onTouchEvent(event)
+            true
+        } else super.onTouchEvent(event)
+    }
+
+    override fun onShowPress(e: MotionEvent?) {
+    }
+
+    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+        return false
+    }
+
+    override fun onDown(e: MotionEvent?): Boolean {
+        mStartX = e?.x ?: 0f
+        mStartY = e?.y ?: 0f
+        return true
+    }
+
+    override fun onFling(
+        e1: MotionEvent?,
+        e2: MotionEvent?,
+        velocityX: Float,
+        velocityY: Float
+    ): Boolean {
+        return true
+    }
+
+    override fun onScroll(
+        e1: MotionEvent?,
+        e2: MotionEvent?,
+        distanceX: Float,
+        distanceY: Float
+    ): Boolean {
+        mStartAngle += if (mStartX - mCenterX >= 0f) {//右侧
+            -distanceY / height * 180
+        } else {//左侧
+            distanceY / height * 180
+        }
+        invalidate()
+        return true
+    }
+
+    override fun onLongPress(e: MotionEvent?) {
     }
 
 }

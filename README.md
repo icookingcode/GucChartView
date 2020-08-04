@@ -18,6 +18,8 @@
 * textColor4Describe  描述字体颜色
 * textColor4Score  数字字体颜色
 * isDrawCenterText  是否绘制中间分数总和
+* startAngle  开始绘制饼图的起始角度
+* rotateEnable  是否可以旋转
 ### xml引用
 ```
  <com.guc.gchartview.PieChartView
