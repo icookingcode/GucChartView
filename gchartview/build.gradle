@@ -47,7 +47,7 @@ publish{
     userOrg = 'guchao'
     groupId = 'com.guc.gchartview'
     artifactId = 'gchartview'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'Guc ChartView'
     website = 'https://github.com/icookingcode/GucChartView'
 }
