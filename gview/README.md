@@ -82,3 +82,5 @@
         panelView.needBulge = true
     }
 ```
+### 效果图
+<img src="https://github.com/icookingcode/GucChartView/blob/master/snapshoot/Screenshot_1600943679.png"  height="576" width="306"/>

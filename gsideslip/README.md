@@ -40,5 +40,3 @@
         Toast.makeText(this,"开启应用",Toast.LENGTH_LONG).show()  //点击最后一页进入应用
    }
 ```
-### 效果图
-<img src="https://github.com/icookingcode/GucChartView/blob/master/snapshoot/Screenshot_1600943679.png"  height="576" width="306"/>
