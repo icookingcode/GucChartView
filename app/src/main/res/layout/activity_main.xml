@@ -21,4 +21,18 @@
         app:lineStyle="fixed"
         app:radiusCenterPoint="3dp" />
 
+    <Button
+        android:id="@+id/btnNaviDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="高德地图"
+        app:layout_constraintTop_toBottomOf="@+id/pieChartView" />
+
+    <Button
+        android:id="@+id/btnSideSlip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="侧滑引导页"
+        app:layout_constraintTop_toBottomOf="@+id/btnNaviDemo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

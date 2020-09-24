@@ -1,9 +1,9 @@
 package com.guc.chartview
 
+import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.guc.gchartview.PieChartView
+import androidx.appcompat.app.AppCompatActivity
 import com.guc.gchartview.model.PieData
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,6 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadPieChartData()
+
+        btnNaviDemo.setOnClickListener {
+            startActivity(Intent(this, NaviMapActivity::class.java))
+        }
+
+        btnSideSlip.setOnClickListener {
+            startActivity(Intent(this, SideSlipActivity::class.java))
+        }
     }
 
     private fun loadPieChartData() {

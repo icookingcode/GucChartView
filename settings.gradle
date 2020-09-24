@@ -1,3 +1,4 @@
+include ':gsideslip'
 include ':gchartview'
 include ':app'
 rootProject.name = "GucChartView"
