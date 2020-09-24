@@ -79,6 +79,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(":gchartview")
     implementation project(":gsideslip")
+    implementation project(":gview")
+    implementation 'com.guc.kframe:kframe:1.1.0'
 
     implementation 'com.amap.api:3dmap:7.5.0'//3D地图
 //    implementation 'com.amap.api:map2d:6.0.0'//2D地图

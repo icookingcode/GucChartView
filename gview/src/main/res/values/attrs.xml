@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 刻度尺控件-->
+    <attr name="borderColor" format="color" />
+    <attr name="tickCount" format="integer" />
+    <declare-styleable name="ScaleView">
+        <attr name="scaleType">
+            <!--温度计-->
+            <enum name="temperature" value="0" />
+            <!--电流计-->
+            <enum name="galvanometer" value="1" />
+        </attr>
+        <!--边框颜色-->
+        <attr name="borderColor" />
+        <attr name="pillarDownColor" format="color" />
+        <attr name="pillarUpColor" format="color" />
+        <attr name="pillarWidth" format="dimension" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="tickCount" />
+        <attr name="defaultValue" format="integer" />
+        <attr name="defaultMaxValue" format="integer" />
+        <attr name="defaultMinValue" format="integer" />
+        <attr name="android:textSize" />
+    </declare-styleable>
+
+    <!--仪表盘-->
+    <declare-styleable name="PanelView">
+        <attr name="arcColor" format="color" />
+        <attr name="arcUnColor" format="color" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="android:text" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="tickCount" />
+        <attr name="tickColor" format="color" />
+        <attr name="pointerColor" format="color" />
+        <attr name="outerLineColor" format="color" />
+        <attr name="innerLineColor" format="color" />
+        <attr name="pointerType" format="enum">
+            <enum name="line" value="1" />
+            <enum name="pointer" value="2" />
+        </attr>
+        <attr name="lineSpace" format="integer" />
+    </declare-styleable>
+
+</resources>

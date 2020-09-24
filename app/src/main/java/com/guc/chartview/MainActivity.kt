@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.guc.gchartview.model.PieData
+import com.guc.kframe.ui.DetailInBrowserActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,16 @@ class MainActivity : AppCompatActivity() {
 
         btnSideSlip.setOnClickListener {
             startActivity(Intent(this, SideSlipActivity::class.java))
+        }
+        btnGView.setOnClickListener {
+            startActivity(Intent(this, CustomViewDemoActivity::class.java))
+        }
+        btnECharts.setOnClickListener {
+            DetailInBrowserActivity.showDetail(
+                this,
+                "https://echarts.apache.org/examples/zh/editor.html?c=global-population-bar3d-on-globe&gl=1",
+                "ECharts"
+            )
         }
     }
 

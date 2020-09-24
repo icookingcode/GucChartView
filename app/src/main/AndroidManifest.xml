@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SideSlipActivity"></activity>
+        <activity android:name=".CustomViewDemoActivity"></activity>
+        <activity android:name=".SideSlipActivity" />
         <activity android:name=".NaviMapActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -30,7 +31,7 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="@string/api_key" /> <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
-        <service android:name="com.amap.api.location.APSService"></service>
+        <service android:name="com.amap.api.location.APSService" />
     </application>
 
 </manifest>

@@ -35,4 +35,18 @@
         android:text="侧滑引导页"
         app:layout_constraintTop_toBottomOf="@+id/btnNaviDemo" />
 
+    <Button
+        android:id="@+id/btnGView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义View"
+        app:layout_constraintTop_toBottomOf="@+id/btnSideSlip" />
+
+    <Button
+        android:id="@+id/btnECharts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EChartsDemo"
+        app:layout_constraintTop_toBottomOf="@+id/btnGView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
