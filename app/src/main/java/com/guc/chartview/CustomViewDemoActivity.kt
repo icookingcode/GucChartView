@@ -3,6 +3,7 @@ package com.guc.chartview
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.guc.gview.ScaleView
+import com.guc.gview.textview.ExpandableTextView
 import kotlinx.android.synthetic.main.activity_custom_view_demo.*
 
 /**
@@ -16,6 +17,11 @@ class CustomViewDemoActivity : AppCompatActivity() {
 
         testScaleView()
         testPanelView()
+        testExpandTextView()
+    }
+
+    private fun testExpandTextView() {
+        etv.currentState = ExpandableTextView.STATE_EXPAND
     }
 
     private fun testPanelView() {
@@ -23,7 +29,6 @@ class CustomViewDemoActivity : AppCompatActivity() {
         panelView2.setValue(50f)
         panelView2.needBulge = true
     }
-
 
     private fun testScaleView() {
         scaleView.type = ScaleView.SCALE_TYPE_TEMPERATURE

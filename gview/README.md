@@ -113,3 +113,34 @@
 * isTextVisible：文字是否可见
 * tipFold：展开操作提示语
 * tipUnfold：折叠操作提示语
+
+## ExpandableTextView  多行文本显示（折叠、展开）
+### 自定义属性
+* etv_MaxLinesOnShrink：折叠状态下显示文本行数
+* etv_EllipsisHint：折叠状态省略样式， 默认 ...
+* etv_ToExpandHint：展开状态下操作提示语，默认 收起
+* etv_ToShrinkHint：折叠状态下操作提示语，默认 显示更多
+* etv_GapToExpandHint：展开状态下文本语操作语间填充
+* etv_GapToShrinkHint：折叠状态下文本语操作语间填充
+* etv_EnableToggle：点击View是否切换折叠/展开
+* etv_IsShowExpandHint：是否显示展开操作提示语
+* etv_IsShowShrinkHint：是否显示折叠操作提示语
+* etv_ToExpandHintColor：展开操作提示语颜色
+* etv_ToShrinkHintColor：折叠操作提示语颜色
+* etv_ToExpandHintColorBgPressed：开操作提示语点击背景色
+* etv_ToShrinkHintColorBgPressed：折叠作提示语点击背景色
+* etv_InitState：初始状态 shrink：折叠 expand：展开
+### 布局引入
+```
+    <com.guc.gview.textview.ExpandableTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/story"
+        app:etv_IsShowExpandHint="false"
+        app:etv_IsShowShrinkHint="false"
+        app:etv_EnableToggle="true"/>
+```
+注意：etv_IsShowExpandHint | etv_IsShowShrinkHint 设置为false时，etv_EnableToggle必须设置true,否则无法切换折叠/展开状态
+### 提供的属性及方法
+* currentState：设置状态 STATE_SHRINK/STATE_EXPAND
+* getState()：获取当前状态

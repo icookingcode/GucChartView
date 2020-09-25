@@ -1,4 +1,4 @@
-package com.guc.gview
+package com.guc.gview.textview
 
 import android.content.Context
 import android.graphics.Typeface

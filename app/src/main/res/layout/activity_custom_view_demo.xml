@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.guc.gview.LedTextView
+        <com.guc.gview.textview.LedTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -51,6 +51,7 @@
             app:pointerType="pointer" />
 
     </LinearLayout>
+
     <com.guc.gview.PanelView
         android:id="@+id/panelView2"
         android:layout_width="wrap_content"
@@ -64,6 +65,12 @@
         app:pointerColor="@color/colorPrimaryDark"
         app:pointerType="line"
         app:tickColor="#46B31D" />
+
+    <com.guc.gview.textview.ExpandableTextView
+        android:id="@+id/etv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/story" />
 
 
 </LinearLayout>
