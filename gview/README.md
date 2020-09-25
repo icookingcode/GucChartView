@@ -84,3 +84,32 @@
 ```
 ### 效果图
 <img src="https://github.com/icookingcode/GucChartView/blob/master/snapshoot/Screenshot_1600943679.png"  height="576" width="306"/>
+
+## FolderView  折叠/展开控件
+### 自定义属性
+* isTextVisible：文字是否显示
+* android:textColor：字体颜色
+* android:textSize：字体大小
+* arrowDownDrawable：展开操作图标
+* arrowUpDrawable：折叠操作图标
+* controlledView：被控制的View的Id
+* tipFold：展开提示语
+* tipUnfold：折叠提示语
+### 布局引入
+```
+    <com.guc.gview.FolderView
+        android:id="@+id/folderView"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:isTextVisible="true"
+        app:controlledView="@+id/llTop"/>
+```
+### 代码中设置参数
+* folderType：true:展开  false:折叠
+* textColor：文字颜色
+* textSize：文字大小
+* isTextVisible：文字是否可见
+* tipFold：展开操作提示语
+* tipUnfold：折叠操作提示语

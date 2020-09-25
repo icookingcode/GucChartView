@@ -43,4 +43,17 @@
         <attr name="lineSpace" format="integer" />
     </declare-styleable>
 
+    <!--折叠view-->
+    <declare-styleable name="FolderView">
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="isTextVisible" format="boolean" />
+        <attr name="arrowDownDrawable" format="reference" />
+        <attr name="arrowUpDrawable" format="reference" />
+        <attr name="controlledView" format="reference" />
+        <attr name="tipFold" format="reference|string" />
+        <attr name="tipUnfold" format="reference|string" />
+    </declare-styleable>
+
+
 </resources>

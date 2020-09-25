@@ -69,7 +69,7 @@ class PanelView(
         }
     private var mTickTextPaint: Paint? = null
     private var textBound: Rect? = null
-    private var textTike: String? = null
+    private var textTick: String? = null
 
     //刻度宽度
     private var mTickWidth = 20f
@@ -253,10 +253,10 @@ class PanelView(
                 thirdMargin + mTickWidth,
                 p
             )
-            textTike = (maxValue * (mTickCount / 2 - i - 1) / mTickCount).toString()
-            mTickTextPaint!!.getTextBounds(textTike, 0, textTike!!.length, textBound)
+            textTick = (maxValue * (mTickCount / 2 - i - 1) / mTickCount).toString()
+            mTickTextPaint!!.getTextBounds(textTick, 0, textTick!!.length, textBound)
             canvas.drawText(
-                textTike!!,
+                textTick!!,
                 (mWidth - textBound!!.width()) / 2.toFloat(),
                 thirdMargin + 1.5f * mTickWidth + textBound!!.height(),
                 mTickTextPaint!!
@@ -282,10 +282,10 @@ class PanelView(
                 thirdMargin + mTickWidth,
                 p
             )
-            textTike = (maxValue * (mTickCount / 2 + i + 1) / mTickCount).toString()
-            mTickTextPaint!!.getTextBounds(textTike, 0, textTike!!.length, textBound)
+            textTick = (maxValue * (mTickCount / 2 + i + 1) / mTickCount).toString()
+            mTickTextPaint!!.getTextBounds(textTick, 0, textTick!!.length, textBound)
             canvas.drawText(
-                textTike!!,
+                textTick!!,
                 (mWidth - textBound!!.width()) / 2.toFloat(),
                 thirdMargin + 1.5f * mTickWidth + textBound!!.height(),
                 mTickTextPaint!!
@@ -311,10 +311,10 @@ class PanelView(
             thirdMargin + mTickWidth,
             p
         )
-        textTike = (maxValue / 2).toString()
-        mTickTextPaint!!.getTextBounds(textTike, 0, textTike!!.length, textBound)
+        textTick = (maxValue / 2).toString()
+        mTickTextPaint!!.getTextBounds(textTick, 0, textTick!!.length, textBound)
         canvas.drawText(
-            textTike!!,
+            textTick!!,
             (mWidth - textBound!!.width()) / 2.toFloat(),
             thirdMargin + 1.5f * mTickWidth + textBound!!.height(),
             mTickTextPaint!!

@@ -7,7 +7,17 @@
     android:orientation="vertical"
     tools:context=".CustomViewDemoActivity">
 
+    <com.guc.gview.FolderView
+        android:id="@+id/folderView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="12sp"
+        app:controlledView="@+id/llTop"
+        app:isTextVisible="true" />
+
     <LinearLayout
+        android:id="@+id/llTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -41,7 +51,6 @@
             app:pointerType="pointer" />
 
     </LinearLayout>
-
     <com.guc.gview.PanelView
         android:id="@+id/panelView2"
         android:layout_width="wrap_content"

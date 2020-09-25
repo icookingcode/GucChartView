@@ -16,7 +16,6 @@ class CustomViewDemoActivity : AppCompatActivity() {
 
         testScaleView()
         testPanelView()
-
     }
 
     private fun testPanelView() {
