@@ -36,7 +36,7 @@ class SignNameView(
      * 签名画布
      */
     private lateinit var cacheBitmap: Bitmap
-    private var mBackColor = 0
+    private var mBgColor = 0
     private var mLineColor = 0
     private var mLineWidth = 0
     private var hasSign = false
@@ -57,7 +57,7 @@ class SignNameView(
     fun clean() {
         mPath.reset()
         hasSign = false
-        if (::cacheCanvas.isInitialized) cacheCanvas.drawColor(mBackColor, PorterDuff.Mode.CLEAR)
+        if (::cacheCanvas.isInitialized) cacheCanvas.drawColor(mBgColor, PorterDuff.Mode.CLEAR)
         invalidate()
     }
 
@@ -81,11 +81,12 @@ class SignNameView(
         //创建跟view一样大的bitmap，用来保存签名
         cacheBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         cacheCanvas = Canvas(cacheBitmap)
-        cacheCanvas.drawColor(mBackColor)
+        cacheCanvas.drawColor(mBgColor)
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+        canvas?.drawColor(mBgColor)
         canvas?.drawPath(mPath, mPaint)
     }
 
@@ -117,7 +118,7 @@ class SignNameView(
             R.styleable.SignNameView_lineWith,
             CommonUtils.dp2px(context, 1)
         )
-        mBackColor = array.getColor(R.styleable.SignNameView_bgColor, Color.WHITE)
+        mBgColor = array.getColor(R.styleable.SignNameView_bgColor, Color.WHITE)
         mLineColor = array.getColor(R.styleable.SignNameView_lineColor, Color.BLACK)
         array.recycle()
     }
