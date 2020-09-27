@@ -144,3 +144,16 @@
 ### 提供的属性及方法
 * currentState：设置状态 STATE_SHRINK/STATE_EXPAND
 * getState()：获取当前状态
+
+## LineLoadingDrawable  线条加载动画
+## CoffeeDrawable  搅拌咖啡加载动画
+
+## SignNameView  签名控件
+### 自定义属性
+* lineWith：签名线宽度
+* bgColor：签名背景色
+* lineColor：签名字体颜色
+### 提供的方法
+* clean()：清除签名
+* getSignBitmap()：获取签名bitmap
+* saveSign(path):保存签名到指定位置

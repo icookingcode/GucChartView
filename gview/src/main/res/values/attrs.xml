@@ -74,5 +74,11 @@
             <enum name="expand" value="1" />
         </attr>
     </declare-styleable>
+    <!--签名控件-->
+    <declare-styleable name="SignNameView">
+        <attr name="lineWith" format="dimension" />
+        <attr name="bgColor" format="color" />
+        <attr name="lineColor" format="dimension" />
+    </declare-styleable>
 
 </resources>
