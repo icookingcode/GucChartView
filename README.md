@@ -115,10 +115,10 @@ implementation 'com.guc.gsideslip:gsideslip:1.0.0'
 
 # gview
 
-#关于我
-Name: Guchao
-Email: happygc913@gmail.com / happygc@126.com
-CSDN: [snow_lyGirl](https://blog.csdn.net/qq_31028313)
-GitHub: [GuchaoGit](https://github.com/GuchaoGit?tab=repositories)
-Gitee:[GuChaoGitee](https://gitee.com/guchaogitee/projects)
-加入QQ群:128937635
+# 关于我  
+Name: Guchao  
+Email: happygc913@gmail.com / happygc@126.com  
+CSDN: [snow_lyGirl](https://blog.csdn.net/qq_31028313)  
+GitHub: [GuchaoGit](https://github.com/GuchaoGit?tab=repositories)  
+Gitee:[GuChaoGitee](https://gitee.com/guchaogitee/projects)  
+加入QQ群:128937635  
