@@ -467,6 +467,8 @@ public class CoffeeDrawable extends Drawable {
 
     /**
      * 画搅拌棒
+     *
+     * @param canvas 画布
      */
     private void drawStick(Canvas canvas) {
         mPaint.setColor(mStickColor);
@@ -535,6 +537,7 @@ public class CoffeeDrawable extends Drawable {
 
     /**
      * 画手
+     * @param canvas 画布
      */
     private void drawHand(Canvas canvas) {
         updateOFingerRect();
@@ -549,6 +552,7 @@ public class CoffeeDrawable extends Drawable {
 
     /**
      * 画OK形状的手指
+     * @param canvas 画布
      */
     private void drawOKFingers(Canvas canvas) {
         setPaintStrokeAndWidth(mFingerWidth);
@@ -558,6 +562,7 @@ public class CoffeeDrawable extends Drawable {
 
     /**
      * 画手臂
+     * @param canvas 画布
      */
     private void drawArm(Canvas canvas) {
         setPaintFillAndColor(mHandColor);

@@ -1,4 +1,17 @@
 # gchartview
+## Maven
+```
+<dependency>
+  <groupId>com.guc.gchartview</groupId>
+  <artifactId>gchartview</artifactId>
+  <version>1.0.1</version>
+  <type>pom</type>
+</dependency>
+```
+## Gradle
+```
+implementation 'com.guc.gchartview:gchartview:1.0.1'
+```
 自定义图表
 ## PieChartView
 ### 属性
@@ -45,6 +58,19 @@
 <img src="https://github.com/icookingcode/GucChartView/blob/master/snapshoot/Screenshot_1596012210.png"  height="576" width="306"/>
 
 # gsideslip 流体控件
+## Maven
+```
+<dependency>
+  <groupId>com.guc.gsideslip</groupId>
+  <artifactId>gsideslip</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
+## Gradle
+```
+implementation 'com.guc.gsideslip:gsideslip:1.0.0'
+```
 ## SideSlipView
 ### xml引用
 ```

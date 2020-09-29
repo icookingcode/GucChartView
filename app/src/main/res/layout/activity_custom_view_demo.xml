@@ -16,6 +16,11 @@
         app:controlledView="@+id/llTop"
         app:isTextVisible="true" />
 
+    <com.guc.gview.textview.RiseNumberTextView
+        android:id="@+id/riseNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/llTop"
         android:layout_width="match_parent"

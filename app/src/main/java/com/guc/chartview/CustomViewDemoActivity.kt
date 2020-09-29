@@ -17,12 +17,16 @@ class CustomViewDemoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_view_demo)
-
+        testRiseNumber()
         testScaleView()
         testPanelView()
         testExpandTextView()
         testLineLoading()
         testSignView()
+    }
+
+    private fun testRiseNumber() {
+        riseNumber.withNumber(9999999).start()
     }
 
     private fun testSignView() {

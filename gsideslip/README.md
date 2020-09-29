@@ -1,4 +1,17 @@
 # 流体控件
+## Maven
+```
+<dependency>
+  <groupId>com.guc.gsideslip</groupId>
+  <artifactId>gsideslip</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
+## Gradle
+```
+implementation 'com.guc.gsideslip:gsideslip:1.0.0'
+```
 ## SideSlipView
 ### xml引用
 ```

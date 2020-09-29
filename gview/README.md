@@ -1,4 +1,17 @@
 # 自定义View
+## Maven
+```
+<dependency>
+  <groupId>com.guc.gview</groupId>
+  <artifactId>gview</artifactId>
+  <version>1.0.1</version>
+  <type>pom</type>
+</dependency>
+```
+## Gradle
+```
+implementation 'com.guc.gview:gview:1.0.1'
+```
 ## LedTextView  LED数字显示效果
 
 ## ScaleView  刻度尺工具，可显示温度和电流
@@ -157,3 +170,14 @@
 * clean()：清除签名
 * getSignBitmap()：获取签名bitmap
 * saveSign(path):保存签名到指定位置
+
+## RiseNumberTextView  带增长动画的TextView
+### 提供的方法
+* withNumber(number: Float, flag: Boolean = true)：设置数值
+* withNumber(number: Float, flag: Boolean = true)：设置数值
+* setDuration(duration:Long)：设置动画持续时间
+* start():启动动画
+调用示例
+```
+riseNumber.withNumber(9999999).start()
+```

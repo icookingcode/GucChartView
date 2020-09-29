@@ -47,7 +47,7 @@ publish{
     userOrg = 'guchao'
     groupId = 'com.guc.gview'
     artifactId = 'gview'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'various custom view,like LedTextView,ScaleView,PanelView...'
     website = 'https://github.com/icookingcode/GucChartView'
 }
