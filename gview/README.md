@@ -182,6 +182,35 @@ implementation 'com.guc.gview:gview:1.0.1'
 riseNumber.withNumber(9999999).start()
 ```
 
+## CoffeeLoadingDialog 搅拌咖啡加载动画
+调用示例
+```
+private var coffeeLoadingDialog:CoffeeLoadingDialog? = null
+
+/**
+  * 显示加载框
+  */
+fun showCoffeeLoading() {
+   if (coffeeLoadingDialog == null) {
+      coffeeLoadingDialog = CoffeeLoadingDialog(this)
+   }
+   if (!coffeeLoadingDialog!!.isShowing) {
+      coffeeLoadingDialog!!.show()
+   }
+}
+
+/**
+ * 隐藏显示框
+ */
+fun hideCoffeeLoading() {
+   if (coffeeLoadingDialog != null && coffeeLoadingDialog!!.isShowing) {
+      coffeeLoadingDialog!!.dismiss()
+   }
+}
+```
+
+
+
 # 关于我  
 Name: Guchao  
 Email: happygc913@gmail.com / happygc@126.com  

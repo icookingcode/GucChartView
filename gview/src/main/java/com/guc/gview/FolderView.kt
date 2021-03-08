@@ -111,8 +111,7 @@ class FolderView(
         tvContent.setTextColor(textColor)
         tvContent.textSize = textSize.toFloat()
         tvContent.visibility = if (isTextVisible) View.VISIBLE else View.GONE
-        tvContent.setOnClickListener(this)
-        ivArrow.setOnClickListener(this)
+        this.setOnClickListener(this)
         initFolder()
     }
 

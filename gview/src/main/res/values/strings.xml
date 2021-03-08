@@ -2,4 +2,5 @@
 <resources>
     <string name="to_expand_hint">显示更多</string>
     <string name="to_shrink_hint">收起</string>
+    <string name="please_wait">请稍后...</string>
 </resources>

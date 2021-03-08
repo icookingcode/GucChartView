@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="loading_dialog_icon_size_large">80dp</dimen>
+    <dimen name="loading_dialog_size">130dp</dimen>
+    <dimen name="radius">4dp</dimen>
+</resources>
